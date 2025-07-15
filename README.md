@@ -39,14 +39,14 @@ Complaint-Tracker/
 ├── complaint-frontend/     # React Frontend
 ├── complaintsystem/        # Spring Boot Backend
 ├── screenshots.pdf         # Project output screenshots
-├── paln.md                 # Planning/Notes
+ 
 ```
 
 ---
 
 ## 📸 Sample Screenshot
 
-![Dashboard Preview](screenshots.png)
+ 
 
 > Refer to [screenshots.pdf](screenshots.pdf) for a full walkthrough of the app.
 
@@ -102,3 +102,4 @@ CREATE DATABASE complaint_db;
 Made with ❤️ by **Nagesh B C**
 
 - GitHub: [@CodeFear5](https://github.com/CodeFear5)
+- GitHub: [@LinkedIn](https://www.linkedin.com/in/nagesh-b-c-b5614b254/)
