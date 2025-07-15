@@ -1,0 +1,5 @@
+package com.nagesh.complaintsystem.model;
+
+public class User {
+
+}

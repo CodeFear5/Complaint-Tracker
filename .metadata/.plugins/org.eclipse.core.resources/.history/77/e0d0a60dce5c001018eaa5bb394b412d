@@ -1,0 +1,5 @@
+package com.nagesh.complaintsystem.repository;
+
+public class ComplaintRepository {
+
+}

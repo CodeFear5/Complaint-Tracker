@@ -1,0 +1,43 @@
+package com.nagesh.complaintsystem.controller;
+
+import com.nagesh.complaintsystem.auth.*;
+import com.nagesh.complaintsystem.model.User;
+import com.nagesh.complaintsystem.repository.UserRepository;
+import com.nagesh.complaintsystem.security.JwtService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.*;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin
+public class AuthController {
+
+    @Autowired private AuthenticationManager authManager;
+    @Autowired private UserRepository userRepo;
+    @Autowired private PasswordEncoder encoder;
+    @Autowired private JwtService jwtService;
+
+    @PostMapping("/register")
+    public String register(@RequestBody User user) {
+        if (userRepo.findByEmail(user.getEmail()).isPresent())
+            return "Email already registered";
+
+        user.setPassword(encoder.encode(user.getPassword()));
+        userRepo.save(user);
+        return "Registration successful";
+    }
+
+    @PostMapping("/login")
+    public AuthResponse login(@RequestBody AuthRequest req) {
+        authManager.authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
+        UserDetails user = userRepo.findByEmail(req.getEmail())
+                .map(u -> new org.springframework.security.core.userdetails.User(
+                        u.getEmail(), u.getPassword(),
+                        java.util.List.of(() -> "ROLE_" + u.getRole())))
+                .orElseThrow();
+        return new AuthResponse(jwtService.generateToken(user));
+    }
+}

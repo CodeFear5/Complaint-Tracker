@@ -1,0 +1,5 @@
+package com.nagesh.complaintsystem.dto;
+
+public class LoginResponse {
+
+}
