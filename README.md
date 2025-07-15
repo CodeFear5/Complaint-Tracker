@@ -102,4 +102,4 @@ CREATE DATABASE complaint_db;
 Made with ❤️ by **Nagesh B C**
 
 - GitHub: [@CodeFear5](https://github.com/CodeFear5)
-- GitHub: [@LinkedIn](https://www.linkedin.com/in/nagesh-b-c-b5614b254/)
+- LinkedIn: [@LinkedIn](https://www.linkedin.com/in/nagesh-b-c-b5614b254/)
