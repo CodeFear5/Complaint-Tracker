@@ -25,8 +25,8 @@ const AdminDashboard = () => {
     setError(null);
     try {
       const [res1, res2] = await Promise.all([
-        axios.get('http://localhost:8080/api/complaints', getAuthHeaders()),
-        axios.get('http://localhost:8080/api/users', getAuthHeaders())
+        axios.get('https://44.201.196.33/api/complaints', getAuthHeaders()),
+        axios.get('https://44.201.196.33/api/users', getAuthHeaders())
       ]);
       setComplaints(res1.data);
       setUsers(res2.data.filter(u => u.role === 'USER'));
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
   const resolveComplaint = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:8080/api/complaints/${id}/resolve`,
+        `https://44.201.196.33/api/complaints/${id}/resolve`,
         {},
         getAuthHeaders()
       );
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
     try {
       setAssignmentStatus('Assigning...');
       await axios.post(
-        `http://localhost:8080/api/assignments?complaintId=${selectedComplaint.id}&staffId=${selectedStaff.id}`,
+        `https://44.201.196.33/api/assignments?complaintId=${selectedComplaint.id}&staffId=${selectedStaff.id}`,
         {},
         getAuthHeaders()
       );

@@ -12,7 +12,7 @@ const UserDashboard = () => {
   const fetchComplaints = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8080/api/complaints/user/${userId}`,
+        `https://44.201.196.33/api/complaints/user/${userId}`,
         getAuthHeaders()
       );
       setComplaints(res.data);
@@ -24,7 +24,7 @@ const UserDashboard = () => {
   const handleSubmit = async (formData) => {
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/complaints`,
+        `https://44.201.196.33/api/complaints`,
         { ...formData, submittedBy: { id: userId } },
         getAuthHeaders()
       );
