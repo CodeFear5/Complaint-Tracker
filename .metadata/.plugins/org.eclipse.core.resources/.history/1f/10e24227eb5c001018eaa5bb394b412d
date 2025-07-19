@@ -1,5 +1,0 @@
-package com.nagesh.complaintsystem.config;
-
-public class SecurityConfig {
-
-}

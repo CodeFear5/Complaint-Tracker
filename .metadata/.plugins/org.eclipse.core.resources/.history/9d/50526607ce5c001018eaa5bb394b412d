@@ -1,5 +1,0 @@
-package com.nagesh.complaintsystem.repository;
-
-public class StatusLogRepository {
-
-}

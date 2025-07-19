@@ -4,5 +4,6 @@
     <fullyQualifiedTypeName name="com.nagesh.complaintsystem.dto.RegisterRequest"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
 </qualifiedTypeNameHistroy>
