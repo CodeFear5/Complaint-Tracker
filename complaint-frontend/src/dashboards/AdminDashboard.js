@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import   { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { getAuthHeaders } from '../auth/authUtils';
 import ComplaintCard from '../components/ComplaintCard';
@@ -6,10 +6,8 @@ import StaffCard from '../components/StaffCard';
 import UserTable from '../components/UserTable';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-// import ComplaintChart from
-import ComplaintChart from  "../components/ComplaintChart";
-import { ComposedChart } from 'recharts';
-dayjs.extend(relativeTime);
+ import ComplaintChart from  "../components/ComplaintChart";
+ dayjs.extend(relativeTime);
 
 const AdminDashboard = () => {
   const [complaints, setComplaints] = useState([]);
@@ -84,12 +82,7 @@ const AdminDashboard = () => {
     fetchAll();
   }, []);
 
-  const summaryStats = useMemo(() => [
-    { label: 'Total Complaints', value: complaints.length },
-    { label: 'Total Staff', value: staff.length },
-    { label: 'Total Users', value: users.length },
-  ], [complaints.length, staff.length, users.length]);
-
+ 
 const unresolvedComplaints = useMemo(() => 
   complaints.filter(c => c.status?.toLowerCase() === 'pending'), 
   [complaints]

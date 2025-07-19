@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ComplaintForm from '../components/ComplaintForm';
 import ComplaintCard from '../components/ComplaintCard';
 import axios from 'axios';
@@ -9,7 +9,7 @@ const UserDashboard = () => {
   const [complaints, setComplaints] = useState([]);
   const userId = getUserId();
 
-  const fetchComplaints = async () => {
+  const fetchComplaints = useCallback(async () => {
     try {
       const res = await axios.get(
         `http://localhost:8080/api/complaints/user/${userId}`,
@@ -19,7 +19,7 @@ const UserDashboard = () => {
     } catch (error) {
       console.error('Error fetching complaints:', error);
     }
-  };
+  }, [userId]);
 
   const handleSubmit = async (formData) => {
     try {
@@ -29,7 +29,7 @@ const UserDashboard = () => {
         getAuthHeaders()
       );
       setComplaints((prev) => [res.data, ...prev]);
-      setActiveTab('complaints'); // go to complaints tab
+      setActiveTab('complaints'); // switch to complaints tab
     } catch (error) {
       console.error('Error submitting complaint:', error);
     }
@@ -37,7 +37,7 @@ const UserDashboard = () => {
 
   useEffect(() => {
     fetchComplaints();
-  }, []);
+  }, [fetchComplaints]);
 
   return (
     <div className="p-6">

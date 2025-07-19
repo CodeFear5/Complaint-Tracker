@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import ComplaintCard from '../components/ComplaintCard';
 import axios from 'axios';
 import { getAuthHeaders, getUserId } from '../auth/authUtils';
@@ -8,14 +8,14 @@ const StaffDashboard = () => {
   const [filter, setFilter] = useState('assigned'); // default
   const staffId = getUserId();
 
-  const fetchAssignments = async () => {
+  const fetchAssignments = useCallback(async () => {
     try {
       const res = await axios.get(`http://localhost:8080/api/assignments/staff/${staffId}`, getAuthHeaders());
       setAssignments(res.data);
     } catch (err) {
       console.error("❌ Error fetching assignments", err);
     }
-  };
+  }, [staffId]);
 
   const resolveComplaint = async (id) => {
     try {
@@ -28,7 +28,7 @@ const StaffDashboard = () => {
 
   useEffect(() => {
     fetchAssignments();
-  }, []);
+  }, [fetchAssignments]);
 
   const filteredAssignments = assignments.filter(assign => 
     assign.complaint.status?.toLowerCase() === filter
