@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://44.201.196.33/api',
+  baseURL: 'http://44.201.196.33:8080/api',
 });
 
 // Add Authorization header with token automatically

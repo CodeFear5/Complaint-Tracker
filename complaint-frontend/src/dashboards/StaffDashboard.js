@@ -10,7 +10,7 @@ const StaffDashboard = () => {
 
   const fetchAssignments = useCallback(async () => {
     try {
-      const res = await axios.get(`https://44.201.196.33/api/assignments/staff/${staffId}`, getAuthHeaders());
+      const res = await axios.get(`http://44.201.196.33:8080/api/assignments/staff/${staffId}`, getAuthHeaders());
       setAssignments(res.data);
     } catch (err) {
       console.error("❌ Error fetching assignments", err);
@@ -19,7 +19,7 @@ const StaffDashboard = () => {
 
   const resolveComplaint = async (id) => {
     try {
-      await axios.patch(`https://44.201.196.33/api/complaints/${id}/resolve`, {}, getAuthHeaders());
+      await axios.patch(`http://44.201.196.33:8080/api/complaints/${id}/resolve`, {}, getAuthHeaders());
       fetchAssignments();
     } catch (err) {
       console.error("❌ Error resolving complaint", err);
