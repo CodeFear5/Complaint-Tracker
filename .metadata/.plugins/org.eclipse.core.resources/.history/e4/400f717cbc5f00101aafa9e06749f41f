@@ -1,5 +1,0 @@
-package com.nagesh.complaintsystem.auth;
-
-public class AuthResponse {
-
-}
