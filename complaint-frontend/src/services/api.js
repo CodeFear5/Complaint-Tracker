@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://44.201.196.33:8080/api',
+  baseURL: 'https://complaintsystem-sius.onrender.com/api',
 });
 
 // Add Authorization header with token automatically
