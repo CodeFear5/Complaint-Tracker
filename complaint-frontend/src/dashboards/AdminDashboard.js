@@ -25,8 +25,8 @@ const AdminDashboard = () => {
     setError(null);
     try {
       const [res1, res2] = await Promise.all([
-        axios.get('https://complaintsystem-sius.onrender.com/complaints', getAuthHeaders()),
-        axios.get('https://complaintsystem-sius.onrender.com/api/users', getAuthHeaders())
+        axios.get('http://localhost:8080/api/complaints', getAuthHeaders()),
+        axios.get('http://localhost:8080/api/users', getAuthHeaders())
       ]);
       setComplaints(res1.data);
       setUsers(res2.data.filter(u => u.role === 'USER'));
@@ -42,7 +42,7 @@ const AdminDashboard = () => {
   const resolveComplaint = async (id) => {
     try {
       await axios.patch(
-        `https://complaintsystem-sius.onrender.com/api/complaints/${id}/resolve`,
+        `http://localhost:8080/api/complaints/${id}/resolve`,
         {},
         getAuthHeaders()
       );
@@ -62,7 +62,7 @@ const AdminDashboard = () => {
     try {
       setAssignmentStatus('Assigning...');
       await axios.post(
-        `https://complaintsystem-sius.onrender.com/api/assignments?complaintId=${selectedComplaint.id}&staffId=${selectedStaff.id}`,
+        `http://localhost:8080/api/assignments?complaintId=${selectedComplaint.id}&staffId=${selectedStaff.id}`,
         {},
         getAuthHeaders()
       );
