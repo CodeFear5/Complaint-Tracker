@@ -13,7 +13,10 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://complaint-tracker-frontend.vercel.app")  // You can add more like "https://your-app.netlify.app"
+                        .allowedOrigins(
+                            "http://localhost:3000", 
+                            "https://complaint-tracker-frontend.vercel.app"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);

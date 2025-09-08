@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.3</version>
+        <version>3.3.4</version> <!-- ✅ Latest stable (Sept 2025) -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <jjwt.version>0.11.5</jjwt.version>
+        <jjwt.version>0.11.5</jjwt.version> <!-- ✅ Stable JJWT -->
     </properties>
 
     <dependencies>
@@ -36,21 +36,13 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-   <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>42.7.3</version>
+        <!-- ✅ MySQL Driver (runtime only) -->
+ <!-- MySQL Driver -->
+ <dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>9.4.0</version>
 </dependency>
-
-        
-        
-        <!-- postgresql-->
-        <dependency>
-    <groupId>org.postgresql</groupId>
-    <artifactId>postgresql</artifactId>
-    <version>42.7.3</version> <!-- Use the latest stable version -->
-</dependency>
-
 
         <!-- Spring Security -->
         <dependency>
@@ -58,7 +50,7 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- JWT - JJWT latest version -->
+        <!-- JWT - JJWT -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -77,10 +69,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Jakarta Servlet (needed for filter classes with Jakarta) -->
+        <!-- Jakarta Servlet -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version> <!-- Matches Spring Boot 3.x -->
             <scope>provided</scope>
         </dependency>
 
@@ -103,9 +96,18 @@
 
     <build>
         <plugins>
+            <!-- ✅ Stable Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.3.4</version>
+            </plugin>
+
+            <!-- ✅ Stable JAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
             </plugin>
         </plugins>
     </build>

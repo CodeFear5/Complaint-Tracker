@@ -1,22 +1,14 @@
-# Step 1: Use OpenJDK as base
+# Step 1: Use OpenJDK 17 base image
 FROM openjdk:17-jdk-slim
 
 # Step 2: Set working directory
 WORKDIR /app
 
-# Step 3: Copy JAR file into the container
+# Step 3: Copy the built JAR file
 COPY target/complaintsystem-0.0.1-SNAPSHOT.jar app.jar
 
-# Step 4: Expose port (Render will set PORT)S
+# Step 4: Expose port
 EXPOSE 8080
 
-# Step 5: Run the JAR file
+# Step 5: Run the JAR
 ENTRYPOINT ["java","-jar","app.jar"]
-
-
-
-
-
-
-
-
